@@ -18,13 +18,12 @@ namespace Eastday
 
             // Set start/seed url
             site.AddStartUrl("http://www.eastday.com/");
-            site.Domain = null;
 
             Spider spider = Spider.Create(site,
                 // crawler identity
                 "cnblogs_" + DateTime.Now.ToString("yyyyMMddhhmmss"),
                 // use memoery queue scheduler
-                new QueueDuplicateRemovedScheduler(),
+                new MongoScheduler(),
                 // default page processor will save whole html, and extract urls to target urls via regex
                 new EastdayNewsProcessor())
                 // save crawler result to file in the folder: \{running directory}\data\{crawler identity}\{guid}.dsd
@@ -61,6 +60,8 @@ namespace Eastday
             "^https?://tianqi\\.eastday\\.com",
             "^https?://cp\\.eastday\\.com",
             "^https?://.+\\.eastday\\.com.+\\.php.+",
+            "^https?://.+\\.pdf",
+            "^https?://.+\\.jpg",
             //pdf,jpg.....
         };
 
