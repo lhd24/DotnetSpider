@@ -1,7 +1,6 @@
 ﻿using DotnetSpider.Core;
 using DotnetSpider.Core.Pipeline;
 using DotnetSpider.Core.Processor;
-using DotnetSpider.Core.Scheduler;
 using DotnetSpider.Core.Selector;
 using System;
 using System.Data.SqlClient;

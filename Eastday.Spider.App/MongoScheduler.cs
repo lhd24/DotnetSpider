@@ -130,7 +130,7 @@ namespace Eastday
         public override void Dispose()
         {
             _queue.Clear();
-            base.Dispose();
+            IsExited = true;
         }
     }
 }
