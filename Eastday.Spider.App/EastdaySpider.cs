@@ -67,8 +67,11 @@ namespace Eastday
         public EastdayNewsProcessor()
         {
             // 定义目标页的筛选
-            //AddTargetUrlExtractor(null, "^https?://.+\\.eastday\\.co(m|m/)$", "^https?://.+\\.eastday\\.com/.+/u1ai?\\d+\\.ht(m|ml)$");
-            AddTargetUrlExtractor(null, "^https?://.+\\.eastday\\.com");
+            AddTargetUrlExtractor(null, 
+                "^https?://.+\\.eastday\\.co(m|m/)$", 
+                "^https?://.+\\.eastday\\.com/.+/u1ai?\\d+\\.ht(m|ml)$",
+                "^https?://.+\\.eastday\\.com/(.+)?(/.+)?index(.+)?\\.ht(m|ml)$");
+            //AddTargetUrlExtractor(null, "^https?://.+\\.eastday\\.com");
             AddExcludeTargetUrlPattern(excludeUrl);
         }
 
