@@ -298,7 +298,7 @@ namespace DotnetSpider.Core.Downloader
 					var buffer = new ArraySegment<byte>(contentBytes);
 					if (!TryDetectEncoding(buffer, out htmlCharset))
 					{
-						htmlCharset = Encoding.GetEncoding("UTF-8");
+						htmlCharset = Encoding.GetEncoding("GB2312");
 					}
 				}
 

@@ -7,7 +7,7 @@
     <ProjectGuid>{3778B727-9433-428E-A9D6-418F03BD4412}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Eastday.Spider.App</RootNamespace>
+    <RootNamespace>Eastday</RootNamespace>
     <AssemblyName>Eastday.Spider.App</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -84,10 +84,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EastdaySpider.cs" />
+    <Compile Include="Spider\EastdaySpider.cs" />
+    <Compile Include="MongoConfiguration.cs" />
     <Compile Include="MongoScheduler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Spider\WholeSite.cs" />
     <Compile Include="SQLHelper.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -100,6 +102,10 @@
     <ProjectReference Include="..\src\DotnetSpider.Core\DotnetSpider.Core.net45.csproj">
       <Project>{8efd08a2-cbd0-4984-b2a8-0aafe227e5fa}</Project>
       <Name>DotnetSpider.Core.net45</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\src\DotnetSpider.Extension\DotnetSpider.Extension.net45.csproj">
+      <Project>{0D7EEDA6-F7D4-4CC0-8C60-D950BC43D1F7}</Project>
+      <Name>DotnetSpider.Extension.net45</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

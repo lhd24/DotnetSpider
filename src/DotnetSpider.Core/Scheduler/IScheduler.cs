@@ -15,11 +15,13 @@ namespace DotnetSpider.Core.Scheduler
 
 		void Init(ISpider spider);
 
-		/// <summary>
-		/// Add a url to fetch
-		/// </summary>
-		/// <param name="request"></param>
-		void Push(Request request);
+        event EventHandler<Request> OnPush;
+
+        /// <summary>
+        /// Add a url to fetch
+        /// </summary>
+        /// <param name="request"></param>
+        void Push(Request request);
 
 		/// <summary>
 		/// Get an url to crawl

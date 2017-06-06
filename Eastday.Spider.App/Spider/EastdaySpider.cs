@@ -2,6 +2,7 @@
 using DotnetSpider.Core.Pipeline;
 using DotnetSpider.Core.Processor;
 using DotnetSpider.Core.Selector;
+using DotnetSpider.Extension.Scheduler;
 using System;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
@@ -20,11 +21,11 @@ namespace Eastday
 
             Spider spider = Spider.Create(site,
                 // crawler identity
-                "cnblogs_" + DateTime.Now.ToString("yyyyMMddhhmmss"),
+                "Eastday_Site",
                 // use memoery queue scheduler
-                new MongoScheduler(),
-                // default page processor will save whole html, and extract urls to target urls via regex
-                new EastdayNewsProcessor())
+                new RedisScheduler("127.0.0.1:6379,serviceName=Scheduler.NET,keepAlive=8,allowAdmin=True,connectTimeout=10000,password=6GS9F2QTkP36GggE0c3XwVwI,abortConnect=True,connectRetry=20"),
+            // default page processor will save whole html, and extract urls to target urls via regex
+            new EastdayNewsProcessor())
                 // save crawler result to file in the folder: \{running directory}\data\{crawler identity}\{guid}.dsd
                 .AddPipeline(new NewsPipeline())
                 // dowload html by http client
@@ -72,7 +73,7 @@ namespace Eastday
                 "^https?://.+\\.eastday\\.com/.+/u1ai?\\d+\\.ht(m|ml)$",
                 "^https?://.+\\.eastday\\.com/(.+)?(/.+)?index(.+)?\\.ht(m|ml)$");
             //AddTargetUrlExtractor(null, "^https?://.+\\.eastday\\.com");
-            AddExcludeTargetUrlPattern(excludeUrl);
+            //AddExcludeTargetUrlPattern(excludeUrl);
         }
 
         protected override void Handle(Page page)

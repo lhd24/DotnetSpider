@@ -6,7 +6,7 @@ namespace Eastday
     {
         static void Main(string[] args)
         {
-            EastdaySpider.CrawlerPagesTraversal();
+            WholeSite.CrawlerPagesTraversal();
             Console.WriteLine("Press any key to continue...");
             Console.Read();
         }
