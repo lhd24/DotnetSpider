@@ -51,16 +51,16 @@ namespace Eastday
 
         public void InsertUrlReferer(Request request)
         {
-            string mongoid = Encrypt.Md5Encrypt(request.Identity + request.GetExtra("RefererIdentity"));
-            bool flag = !this.Referer.Find(Builders<BsonDocument>.Filter.Eq<string>("_id", mongoid), null).Any();
-            if (flag)
-            {
+            //string mongoid = Encrypt.Md5Encrypt(request.Identity + request.GetExtra("RefererIdentity"));
+            //bool flag = !this.Referer.Find(Builders<BsonDocument>.Filter.Eq<string>("_id", mongoid), null).Any();
+            //if (flag)
+            //{
                 BsonDocument bsonDocument = new BsonDocument();
-                bsonDocument.Add("_id", mongoid);
+                //bsonDocument.Add("_id", mongoid);
                 bsonDocument.Add("Url", request.Identity);
-                bsonDocument.Add("Referer", request.GetExtra("RefererIdentity"));
+                bsonDocument.Add("Referer", request.GetExtra("RefererIdentity")??"");
                 Referer.InsertOne(bsonDocument);
-            }
+            //}
         }
     }
 }
